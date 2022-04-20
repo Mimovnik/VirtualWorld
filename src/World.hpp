@@ -1,16 +1,14 @@
- #ifndef WORLD_H
- #define WORLD_H
+#ifndef WORLD_H
+#define WORLD_H
 
- class World{
-     char* name;
+#include "Renderer.hpp"
 
-     public:
-     
-     World(){
-         name = "World";
-     }
+class World {
+     int width, height;
 
-     char* getName();
- };
+   public:
+    Renderer rndr;
+    World( int width,  int heigth);
+};
 
- #endif
+#endif

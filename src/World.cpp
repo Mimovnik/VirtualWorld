@@ -1,5 +1,7 @@
 #include "World.hpp"
 
-char* World::getName(){
-    return name;
+World::World( int width, int height) {
+    this->width = width;
+    this->height = height;
+    this->rndr = Renderer(width, height);
 }

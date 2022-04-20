@@ -6,6 +6,9 @@ add_library(
 
     src/World.hpp
     src/World.cpp
+
+    src/Renderer.hpp
+    src/Renderer.cpp
 )
 
 add_executable(virtualWorld src/main.cpp)
