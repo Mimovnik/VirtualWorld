@@ -7,8 +7,11 @@ add_library(
     src/World.hpp
     src/World.cpp
 
-    src/Renderer.hpp
-    src/Renderer.cpp
+    src/Organism.hpp
+    src/Organism.cpp
+
+    src/Vector.hpp
+    src/Vector.cpp
 )
 
 add_executable(virtualWorld src/main.cpp)
