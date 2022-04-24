@@ -2,13 +2,23 @@
 
 #include <iostream>
 
+#include "animals/Human.hpp"
+#include "animals/Wolf.hpp"
+#include "plants/Grass.hpp"
+
 World::World(int width, int height) {
     this->width = width;
     this->height = height;
     this->terrain = new char[width * height];
     std::memset(terrain, '.', width * height);
-    int organismsNumber = width * height / 5 + 1;
+    int organismsNumber = width * height / 10 + 1;
+    organisms.push_back(std::make_unique<Human>(Human()));
     for (int i = 0; i < organismsNumber; i++) {
+        if (i % 2) {
+            organisms.push_back(std::make_unique<Wolf>(Wolf()));
+        } else {
+            organisms.push_back(std::make_unique<Grass>(Grass()));
+        }
     }
 }
 
@@ -44,6 +54,6 @@ void World::draw() {
 }
 void World::renderOrganisms() {
     for (int i = 0; i < organisms.size(); i++) {
-        *getCell(organisms[i].getPos()) = organisms[i].getSkin();
+        *getCell(organisms[i]->getPos()) = organisms[i]->getSkin();
     }
 }

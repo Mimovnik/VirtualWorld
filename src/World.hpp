@@ -8,7 +8,7 @@ class World {
    protected:
     int width, height;
     char* terrain = nullptr;
-    std::vector<Organism> organisms;
+    std::vector<std::unique_ptr<Organism>> organisms;
 
     friend std::ostream& operator<<(std::ostream& os, const World& world);
 
