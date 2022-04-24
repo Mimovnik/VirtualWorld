@@ -23,7 +23,7 @@ int main() {
 
         char ready;
         while (std::cin >> ready) {
-            if (ready == 'N') {
+            if (ready == 'n') {
                 break;
             }
         }

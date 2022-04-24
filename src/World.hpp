@@ -2,22 +2,26 @@
 #define WORLD_HPP
 
 #include "Organism.hpp"
+#include <vector>
 
 class World {
    protected:
     int width, height;
-    Organism* terrain = nullptr;
+    char* terrain = nullptr;
+    std::vector<Organism> organisms;
 
     friend std::ostream& operator<<(std::ostream& os, const World& world);
 
    public:
     World(int width, int heigth);
 
-    Organism getCell(int x, int y);
+    char* getCell(int x, int y);
 
-    Organism getCell(Vector position);
+    char* getCell(Vector position);
 
     void draw();
+
+    void renderOrganisms();
 };
 
 #endif

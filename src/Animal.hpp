@@ -4,18 +4,14 @@
 #include "Organism.hpp"
 
 class Animal : public Organism {
-   protected:
    public:
-   Animal(int strenght, int initiative, Vector position, char skin);
-   void action() override{
+    Animal();
+    void action() override{
 
-   };
-   void collide() override{
-       
-   };
-   void render(World world) override{
-       
-   };
+    };
+    void collide() override{
+
+    };
 };
 
 #endif

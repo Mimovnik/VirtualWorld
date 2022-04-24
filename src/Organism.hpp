@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include "Vector.hpp"
-#include "World.hpp"
+#include "settings.hpp"
 
 class Organism {
    protected:
@@ -16,11 +16,11 @@ class Organism {
     friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
 
    public:
-    Organism() {}
+    Organism();
     Vector getPos();
-    virtual void action();
-    virtual void collide();
-    virtual void render(World world);
+    virtual void action() = 0;
+    virtual void collide() = 0;
+    char getSkin();
 };
 
 #endif

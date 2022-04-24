@@ -8,8 +8,8 @@
 #define TYPE int
 class Vector {
    public:
-    int x;
-    int y;
+    TYPE x;
+    TYPE y;
     const static Vector ZERO;
 
     Vector() {
@@ -27,7 +27,7 @@ class Vector {
         this->y = std::move(other.y);
     }
 
-    Vector(int x, int y) {
+    Vector(TYPE x, TYPE y) {
         this->x = x;
         this->y = y;
     }
@@ -55,22 +55,16 @@ class Vector {
         return *this = this->difference(right);
     }
 
-    Vector operator*(const int& right) { return this->rescale(right); }
+    Vector operator*(const double& right) { return this->rescale(right); }
 
     Vector operator*(const Vector& right) { return this->rescale(right); }
 
-    Vector& operator*=(const int& right) {
+    Vector& operator*=(const double& right) {
         return *this = this->rescale(right);
     }
 
     Vector& operator*=(const Vector& right) {
         return *this = this->rescale(right);
-    }
-
-    static Vector fromAngle(int length, int angle) {
-        int x = length * sin(angle * PI / 180);
-        int y = length * cos(angle * PI / 180);
-        return Vector(x, y);
     }
 
     Vector difference(Vector other) { return Vector(x - other.x, y - other.y); }
@@ -81,32 +75,23 @@ class Vector {
 
     Vector invertY() { return Vector(x, -y); }
 
-    int magnitude() { return sqrt(x * x + y * y); }
+    double magnitude() { return sqrt(x * x + y * y); }
 
-    Vector rescale(int factor) { return Vector(x * factor, y * factor); }
+    Vector rescale(double factor) {
+        return Vector(static_cast<TYPE>(x * factor),
+                      static_cast<TYPE>(y * factor));
+    }
 
     Vector rescale(Vector other) {
-        int ratio = other.magnitude() / this->magnitude();
+        double ratio = other.magnitude() / this->magnitude();
         return rescale(ratio);
     }
 
     Vector add(Vector other) { return Vector(x + other.x, y + other.y); }
 
-    Vector addX(int x_) { return Vector(x + x_, y); }
+    Vector addX(TYPE x_) { return Vector(x + x_, y); }
 
-    Vector addY(int y_) { return Vector(x, y + y_); }
-
-    Vector setAngle(int angle) {
-        return Vector(magnitude() * sin(angle * PI / 180),
-                      magnitude() * cos(angle * PI / 180));
-    }
-
-    int getAngle() {
-        if (magnitude() == 0) return 0;
-        return (180 / PI) * atan2(x, y);
-    }
-
-    Vector rotate(int angle) { return setAngle(getAngle() + angle); }
+    Vector addY(TYPE y_) { return Vector(x, y + y_); }
 };
 
 #endif
