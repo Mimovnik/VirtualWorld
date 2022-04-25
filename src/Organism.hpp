@@ -21,12 +21,11 @@ class Organism {
     friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
 
    public:
-    ;
     Organism();
     Organism(World* world, int strength, int initiative, char skin);
     Vector getPos();
     char getSkin();
-    bool operator<(const Organism& other) const;
+    friend bool operator<(const Organism& left, const Organism& other);
     virtual void action() = 0;
     virtual void collide() = 0;
 };
