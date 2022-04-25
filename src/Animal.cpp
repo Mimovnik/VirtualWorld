@@ -10,7 +10,7 @@ Animal::Animal(World* world, int strength, int initiative, char skin)
 void Animal::move(int direction) {
     switch (direction) {
         case 0:
-            if (position.x < world->getWidth()) {
+            if (position.x + 1 < world->getWidth()) {
                 position.x += 1;
             }
             break;
@@ -20,7 +20,7 @@ void Animal::move(int direction) {
             }
             break;
         case 2:
-            if (position.y < world->getHeight()) {
+            if (position.y + 1 < world->getHeight()) {
                 position.y += 1;
             }
             break;

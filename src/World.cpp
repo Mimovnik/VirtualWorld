@@ -5,23 +5,61 @@
 #include <algorithm>
 #include <iostream>
 
+#include "animals/Antelope.hpp"
+#include "animals/Fox.hpp"
 #include "animals/Human.hpp"
+#include "animals/Sheep.hpp"
+#include "animals/Turtle.hpp"
 #include "animals/Wolf.hpp"
+#include "plants/Dandelion.hpp"
 #include "plants/Grass.hpp"
+#include "plants/Guarana.hpp"
+#include "plants/PineBorscht.hpp"
+#include "plants/Wolfberry.hpp"
 
 World::World(int width, int height) {
     this->width = width;
     this->height = height;
     this->terrain = new char[width * height];
     std::memset(terrain, '.', width * height);
-    int organismsNumber = width * height / 100 + 1;
-    organismsNumber = 3;
+    int organismsNumber = width * height / 100;
     organisms.push_back(std::make_unique<Human>(Human(this)));
     for (int i = 0; i < organismsNumber; i++) {
-        if (i % 2) {
-            organisms.push_back(std::make_unique<Wolf>(Wolf(this)));
-        } else {
-            organisms.push_back(std::make_unique<Grass>(Grass(this)));
+        int whichOne = rand() % 10;
+        switch (whichOne) {
+            case 0:
+                organisms.push_back(std::make_unique<Antelope>(Antelope(this)));
+                break;
+            case 1:
+                organisms.push_back(std::make_unique<Fox>(Fox(this)));
+                break;
+            case 2:
+                organisms.push_back(std::make_unique<Sheep>(Sheep(this)));
+                break;
+            case 3:
+                organisms.push_back(std::make_unique<Turtle>(Turtle(this)));
+                break;
+            case 4:
+                organisms.push_back(std::make_unique<Wolf>(Wolf(this)));
+                break;
+            case 5:
+                organisms.push_back(
+                    std::make_unique<Dandelion>(Dandelion(this)));
+                break;
+            case 6:
+                organisms.push_back(std::make_unique<Grass>(Grass(this)));
+                break;
+            case 7:
+                organisms.push_back(std::make_unique<Guarana>(Guarana(this)));
+                break;
+            case 8:
+                organisms.push_back(
+                    std::make_unique<PineBorscht>(PineBorscht(this)));
+                break;
+            case 9:
+                organisms.push_back(
+                    std::make_unique<Wolfberry>(Wolfberry(this)));
+                break;
         }
     }
 }
