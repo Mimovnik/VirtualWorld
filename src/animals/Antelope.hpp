@@ -5,12 +5,8 @@
 
 class Antelope : public Animal {
    public:
-    Antelope() {
-        this->strenght = ANTELOPE_STRENGTH;
-        this->initiative = ANTELOPE_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = ANTELOPE_SKIN;
-    }
+    Antelope(World* world)
+        : Animal(world, ANTELOPE_STRENGTH, ANTELOPE_INITIATIVE, ANTELOPE_SKIN) {}
 };
 
 #endif

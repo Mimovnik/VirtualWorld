@@ -1,8 +1,9 @@
 #ifndef WORLD_HPP
 #define WORLD_HPP
 
-#include "Organism.hpp"
 #include <vector>
+
+#include "Organism.hpp"
 
 class World {
    protected:
@@ -11,6 +12,8 @@ class World {
     std::vector<std::unique_ptr<Organism>> organisms;
 
     friend std::ostream& operator<<(std::ostream& os, const World& world);
+
+    void sortOrganisms();
 
    public:
     World(int width, int heigth);
@@ -22,6 +25,16 @@ class World {
     void draw();
 
     void renderOrganisms();
+
+    void makeTurns();
+
+    Vector getRandomEmptyPos();
+
+    int getSize() const;
+
+    int getWidth() const;
+
+    int getHeight() const;
 };
 
 #endif

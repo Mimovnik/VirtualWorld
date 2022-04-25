@@ -5,12 +5,8 @@
 
 class Fox : public Animal {
    public:
-    Fox() {
-        this->strenght = FOX_STRENGTH;
-        this->initiative = FOX_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = FOX_SKIN;
-    }
+    Fox(World* world)
+        : Animal(world, FOX_STRENGTH, FOX_INITIATIVE, FOX_SKIN) {}
 };
 
 #endif

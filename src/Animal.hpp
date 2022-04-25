@@ -6,6 +6,7 @@
 class Animal : public Organism {
    public:
     Animal();
+    Animal(World* world, int strength, int initiative, char skin);
     void action() override{
 
     };

@@ -5,12 +5,9 @@
 
 class PineBorscht : public Plant {
    public:
-    PineBorscht() {
-        this->strenght = PINEBORSCHT_STRENGTH;
-        this->initiative = PINEBORSCHT_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = PINEBORSCHT_SKIN;
-    }
+    PineBorscht(World* world)
+        : Plant(world, PINEBORSCHT_STRENGTH, PINEBORSCHT_INITIATIVE,
+                PINEBORSCHT_SKIN) {}
 };
 
 #endif

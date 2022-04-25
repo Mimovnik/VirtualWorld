@@ -66,6 +66,9 @@ class Vector {
     Vector& operator*=(const Vector& right) {
         return *this = this->rescale(right);
     }
+    bool operator==(const Vector& right) {
+        return (this->x == right.x && this->y == right.y);
+    }
 
     Vector difference(Vector other) { return Vector(x - other.x, y - other.y); }
 

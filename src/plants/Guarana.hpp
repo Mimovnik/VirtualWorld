@@ -5,12 +5,8 @@
 
 class Guarana : public Plant {
    public:
-    Guarana() {
-        this->strenght = GUARANA_STRENGTH;
-        this->initiative = GUARANA_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = GUARANA_SKIN;
-    }
+    Guarana(World* world)
+        : Plant(world, GUARANA_STRENGTH, GUARANA_INITIATIVE, GUARANA_SKIN) {}
 };
 
 #endif

@@ -5,12 +5,8 @@
 
 class Human : public Animal {
    public:
-    Human() {
-        this->strenght = HUMAN_STRENGTH;
-        this->initiative = HUMAN_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = HUMAN_SKIN;
-    }
+    Human(World* world)
+        : Animal(world, HUMAN_STRENGTH, HUMAN_INITIATIVE, HUMAN_SKIN) {}
 };
 
 #endif

@@ -5,12 +5,8 @@
 
 class Dandelion : public Plant {
    public:
-    Dandelion() {
-        this->strenght = DANDELION_STRENGTH;
-        this->initiative = DANDELION_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = DANDELION_SKIN;
-    }
+    Dandelion(World* world)
+        : Plant(world, DANDELION_STRENGTH, DANDELION_INITIATIVE, DANDELION_SKIN) {}
 };
 
 #endif

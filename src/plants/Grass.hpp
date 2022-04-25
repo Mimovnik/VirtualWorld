@@ -5,12 +5,8 @@
 
 class Grass : public Plant {
    public:
-    Grass() {
-        this->strenght = GRASS_STRENGTH;
-        this->initiative = GRASS_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = GRASS_SKIN;
-    }
+    Grass(World* world)
+        : Plant(world, GRASS_STRENGTH, GRASS_INITIATIVE, GRASS_SKIN) {}
 };
 
 #endif

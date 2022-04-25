@@ -3,15 +3,16 @@
 
 #include "Organism.hpp"
 
-class Plant : public Organism{
-public:
-   Plant();
-   void action() override{
+class Plant : public Organism {
+   public:
+    Plant();
+    Plant(World* world, int strength, int initiative, char skin);
+    void action() override{
 
-   };
+    };
     void collide() override{
-       
-   };
+
+    };
 };
 
 #endif

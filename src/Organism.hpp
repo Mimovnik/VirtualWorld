@@ -1,26 +1,34 @@
 #ifndef ORGANISM_HPP
 #define ORGANISM_HPP
 
+#include <time.h>
+
 #include <iostream>
 
 #include "Vector.hpp"
 #include "settings.hpp"
-
+class World;
 class Organism {
    protected:
-    int strenght;
+    int strength;
     int initiative;
     Vector position;
     char skin;
+    int birthDate;
+    World* world = nullptr;
+    static int organismsCount;
 
     friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
 
    public:
+    ;
     Organism();
+    Organism(World* world, int strength, int initiative, char skin);
     Vector getPos();
+    char getSkin();
+    bool operator<(const Organism& other) const;
     virtual void action() = 0;
     virtual void collide() = 0;
-    char getSkin();
 };
 
 #endif

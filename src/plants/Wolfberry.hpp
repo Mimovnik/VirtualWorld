@@ -5,12 +5,8 @@
 
 class Wolfberry : public Plant {
    public:
-    Wolfberry() {
-        this->strenght = WOLFBERRY_STRENGTH;
-        this->initiative = WOLFBERRY_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = WOLFBERRY_SKIN;
-    }
+    Wolfberry(World* world)
+        : Plant(world, WOLF_STRENGTH, WOLF_INITIATIVE, WOLF_SKIN) {}
 };
 
 #endif

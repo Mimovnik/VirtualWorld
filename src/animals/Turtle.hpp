@@ -5,12 +5,8 @@
 
 class Turtle : public Animal {
    public:
-    Turtle() {
-        this->strenght = TURTLE_STRENGTH;
-        this->initiative = TURTLE_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = TURTLE_SKIN;
-    }
+    Turtle(World* world)
+        : Animal(world, TURTLE_STRENGTH, TURTLE_INITIATIVE, TURTLE_SKIN) {}
 };
 
 #endif

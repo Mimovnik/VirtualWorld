@@ -5,12 +5,8 @@
 
 class Wolf : public Animal {
    public:
-    Wolf() {
-        this->strenght = WOLF_STRENGTH;
-        this->initiative = WOLF_INITIATIVE;
-        this->position = Vector::ZERO;
-        this->skin = WOLF_SKIN;
-    }
+    Wolf(World* world)
+        : Animal(world, WOLF_STRENGTH, WOLF_INITIATIVE, WOLF_SKIN) {}
 };
 
 #endif
