@@ -25,7 +25,7 @@ class Organism {
 
     Organism(World* world, int strength, int initiative, char skin);
 
-    friend bool operator<(const Organism& left, const Organism& other);
+    friend bool cmpr(const std::unique_ptr<Organism>& left, const std::unique_ptr<Organism>& right);
 
     Vector getPos();
 

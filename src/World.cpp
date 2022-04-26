@@ -106,7 +106,14 @@ void World::renderOrganisms() {
     }
 }
 
-void World::sortOrganisms() { std::sort(organisms.begin(), organisms.end()); }
+bool cmpr(const std::unique_ptr<Organism>& left, const std::unique_ptr<Organism>& right) {
+    if (left->initiative != right->initiative) {
+        return left->initiative > right->initiative;
+    }
+    return left->birthDate < right->birthDate;
+}
+
+void World::sortOrganisms() { std::sort(organisms.begin(), organisms.end(), cmpr); }
 
 void World::makeTurns() {
     sortOrganisms();

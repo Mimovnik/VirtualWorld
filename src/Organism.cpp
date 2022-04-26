@@ -18,10 +18,6 @@ Organism::Organism(World* world, int strength, int initiative, char skin) {
 
 Vector Organism::getPos() { return position; }
 
-bool operator<(const Organism& left, const Organism& other) {
-    return left.initiative < other.initiative;
-}
-
 std::ostream& operator<<(std::ostream& os, const Organism& organism) {
     std::cout << organism.skin;
     return os;
