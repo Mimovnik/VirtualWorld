@@ -10,7 +10,7 @@ class Plant : public Organism {
     void action() override{
 
     };
-    void collide() override{
+    void collide(std::unique_ptr<Organism>* other) override{
 
     };
 };

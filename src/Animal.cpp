@@ -35,8 +35,13 @@ void Animal::move(int direction) {
 void Animal::action() {
     int direction = rand() % 4;
     move(direction);
+    // Organism beeing attacked by this Animal
+    std::unique_ptr<Organism>* defender = world->getColliderWith(this);
+    if (defender != nullptr) {
+        collide(defender);
+    }
 };
 
-void Animal::collide(){
+void Animal::collide(std::unique_ptr<Organism>* other){
 
 };

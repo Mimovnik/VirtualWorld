@@ -28,3 +28,5 @@ std::ostream& operator<<(std::ostream& os, const Organism& organism) {
 }
 
 char Organism::getSkin() { return skin; }
+
+int Organism::getBirthDate() { return birthDate; }

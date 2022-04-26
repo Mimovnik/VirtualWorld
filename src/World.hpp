@@ -30,6 +30,8 @@ class World {
 
     Vector getRandomEmptyPos();
 
+    std::unique_ptr<Organism>* getColliderWith(Organism* attacker);
+
     int getSize() const;
 
     int getWidth() const;

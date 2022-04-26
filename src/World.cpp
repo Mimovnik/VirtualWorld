@@ -127,6 +127,18 @@ Vector World::getRandomEmptyPos() {
     return pos;
 }
 
+std::unique_ptr<Organism>* World::getColliderWith(Organism* attacker) {
+    for (int i = 0; i < organisms.size(); i++) {
+        // return first organism on the same position as attacker's
+        // as long as it isn't the attacker itself
+        if (attacker->getPos() == organisms[i]->getPos() &&
+            attacker->getBirthDate() != organisms[i]->getBirthDate()) {
+            return &organisms[i];
+        }
+    }
+    return nullptr;
+}
+
 int World::getSize() const { return width * height; }
 int World::getWidth() const { return width; }
 int World::getHeight() const { return height; }

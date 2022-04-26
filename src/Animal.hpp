@@ -11,7 +11,7 @@ class Animal : public Organism {
     Animal();
     Animal(World* world, int strength, int initiative, char skin);
     void action() override;
-    void collide() override;
+    void collide(std::unique_ptr<Organism>* other) override;
 };
 
 #endif

@@ -22,12 +22,20 @@ class Organism {
 
    public:
     Organism();
+
     Organism(World* world, int strength, int initiative, char skin);
-    Vector getPos();
-    char getSkin();
+
     friend bool operator<(const Organism& left, const Organism& other);
+
+    Vector getPos();
+
+    char getSkin();
+
+    int getBirthDate();
+
     virtual void action() = 0;
-    virtual void collide() = 0;
+
+    virtual void collide(std::unique_ptr<Organism>* other) = 0;
 };
 
 #endif
