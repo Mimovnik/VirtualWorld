@@ -11,7 +11,8 @@ class Animal : public Organism {
     Animal();
     Animal(World* world, int strength, int initiative, char skin);
     void action() override;
-    void collide(Organism* other) override;
+    void collide(Organism* defender) override;
+    void takeHit(Organism* attacker) override;
 };
 
 #endif

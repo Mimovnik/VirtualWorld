@@ -2,6 +2,7 @@
 #define ORGANISM_HPP
 
 #include <time.h>
+
 #include <iostream>
 
 #include "Vector.hpp"
@@ -32,9 +33,13 @@ class Organism {
 
     int getBirthDate();
 
+    bool isStronger(Organism* other);
+
     virtual void action() = 0;
 
-    virtual void collide(Organism* other) = 0;
+    virtual void collide(Organism* defender) = 0;
+
+    virtual void takeHit(Organism* attacker) = 0;
 };
 
 #endif

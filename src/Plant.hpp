@@ -9,6 +9,7 @@ class Plant : public Organism {
     Plant(World* world, int strength, int initiative, char skin);
     void action() override;
     void collide(Organism* other) override;
+    void takeHit(Organism* attacker) override;
 };
 
 #endif

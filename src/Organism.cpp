@@ -23,6 +23,10 @@ std::ostream& operator<<(std::ostream& os, const Organism& organism) {
     return os;
 }
 
+bool Organism::isStronger(Organism* other){
+    return strength >= other->strength;
+}
+
 char Organism::getSkin() { return skin; }
 
 int Organism::getBirthDate() { return birthDate; }

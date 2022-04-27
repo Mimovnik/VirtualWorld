@@ -42,6 +42,14 @@ void Animal::action() {
     }
 };
 
-void Animal::collide(Organism* other){
+// *this* is attacking *defender*
+void Animal::collide(Organism* defender){
+    if(isStronger(defender)){
+        defender->takeHit(this);
+    }
+};
 
+// *this* is attacked by *attacker*
+void Animal::takeHit(Organism* attacker){
+    
 };

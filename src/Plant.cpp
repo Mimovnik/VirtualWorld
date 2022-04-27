@@ -12,3 +12,7 @@ void Plant::action(){
 void Plant::collide(Organism* other){
 
 }
+
+void Plant::takeHit(Organism* attacker){
+
+} 

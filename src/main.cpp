@@ -25,10 +25,14 @@ int game() {
         world.makeTurns();
         world.draw();
 
-        std::cout << "n- nastepna tura\n";
-        char ready;
-        while (std::cin >> ready) {
-            if (ready == 'n') {
+        std::cout << "n- nastepna tura, x- wyjscie z gry\n";
+        char input;
+        while (std::cin >> input) {
+            if (input == 'n') {
+                break;
+            }
+            if (input == 'x'){
+                running = false;
                 break;
             }
         }
