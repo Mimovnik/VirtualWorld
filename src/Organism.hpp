@@ -2,7 +2,6 @@
 #define ORGANISM_HPP
 
 #include <time.h>
-
 #include <iostream>
 
 #include "Vector.hpp"
@@ -25,7 +24,7 @@ class Organism {
 
     Organism(World* world, int strength, int initiative, char skin);
 
-    friend bool cmpr(const std::unique_ptr<Organism>& left, const std::unique_ptr<Organism>& right);
+    friend bool compareOrganisms(Organism* left, Organism* right);
 
     Vector getPos();
 
@@ -35,7 +34,7 @@ class Organism {
 
     virtual void action() = 0;
 
-    virtual void collide(std::unique_ptr<Organism>* other) = 0;
+    virtual void collide(Organism* other) = 0;
 };
 
 #endif

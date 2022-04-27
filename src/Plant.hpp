@@ -7,12 +7,8 @@ class Plant : public Organism {
    public:
     Plant();
     Plant(World* world, int strength, int initiative, char skin);
-    void action() override{
-
-    };
-    void collide(std::unique_ptr<Organism>* other) override{
-
-    };
+    void action() override;
+    void collide(Organism* other) override;
 };
 
 #endif

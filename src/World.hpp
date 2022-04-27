@@ -9,7 +9,7 @@ class World {
    protected:
     int width, height;
     char* terrain = nullptr;
-    std::vector<std::unique_ptr<Organism>> organisms;
+    std::vector<Organism*> organisms;
 
     friend std::ostream& operator<<(std::ostream& os, const World& world);
 
@@ -30,7 +30,7 @@ class World {
 
     Vector getRandomEmptyPos();
 
-    std::unique_ptr<Organism>* getColliderWith(Organism* attacker);
+    Organism* getColliderWith(Organism* attacker);
 
     int getSize() const;
 

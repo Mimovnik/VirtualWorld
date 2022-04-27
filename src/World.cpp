@@ -20,45 +20,43 @@
 World::World(int width, int height) {
     this->width = width;
     this->height = height;
-    this->terrain = new char[width * height];
-    std::memset(terrain, '.', width * height);
-    int organismsNumber = width * height / 100;
-    organisms.push_back(std::make_unique<Human>(Human(this)));
+    int size = width * height;
+    this->terrain = new char[size];
+    std::memset(terrain, '.', size);
+    int organismsNumber = size / 100;
+    organisms.push_back(new Human(this));
     for (int i = 0; i < organismsNumber; i++) {
         int whichOne = rand() % 10;
         switch (whichOne) {
             case 0:
-                organisms.push_back(std::make_unique<Antelope>(Antelope(this)));
+                organisms.push_back(new Antelope(this));
                 break;
             case 1:
-                organisms.push_back(std::make_unique<Fox>(Fox(this)));
+                organisms.push_back(new Fox(this));
                 break;
             case 2:
-                organisms.push_back(std::make_unique<Sheep>(Sheep(this)));
+                organisms.push_back(new Sheep(this));
                 break;
             case 3:
-                organisms.push_back(std::make_unique<Turtle>(Turtle(this)));
+                organisms.push_back(new Turtle(this));
                 break;
             case 4:
-                organisms.push_back(std::make_unique<Wolf>(Wolf(this)));
+                organisms.push_back(new Wolf(this));
                 break;
             case 5:
-                organisms.push_back(
-                    std::make_unique<Dandelion>(Dandelion(this)));
+                organisms.push_back(new Dandelion(this));
                 break;
             case 6:
-                organisms.push_back(std::make_unique<Grass>(Grass(this)));
+                organisms.push_back(new Grass(this));
                 break;
             case 7:
-                organisms.push_back(std::make_unique<Guarana>(Guarana(this)));
+                organisms.push_back(new Guarana(this));
                 break;
             case 8:
-                organisms.push_back(
-                    std::make_unique<PineBorscht>(PineBorscht(this)));
+                organisms.push_back(new PineBorscht(this));
                 break;
             case 9:
-                organisms.push_back(
-                    std::make_unique<Wolfberry>(Wolfberry(this)));
+                organisms.push_back(new Wolfberry(this));
                 break;
         }
     }
@@ -106,14 +104,16 @@ void World::renderOrganisms() {
     }
 }
 
-bool cmpr(const std::unique_ptr<Organism>& left, const std::unique_ptr<Organism>& right) {
+bool compareOrganisms(Organism* left, Organism* right) {
     if (left->initiative != right->initiative) {
         return left->initiative > right->initiative;
     }
     return left->birthDate < right->birthDate;
 }
 
-void World::sortOrganisms() { std::sort(organisms.begin(), organisms.end(), cmpr); }
+void World::sortOrganisms() {
+    std::sort(organisms.begin(), organisms.end(), compareOrganisms);
+}
 
 void World::makeTurns() {
     sortOrganisms();
@@ -134,13 +134,13 @@ Vector World::getRandomEmptyPos() {
     return pos;
 }
 
-std::unique_ptr<Organism>* World::getColliderWith(Organism* attacker) {
+Organism* World::getColliderWith(Organism* attacker) {
     for (int i = 0; i < organisms.size(); i++) {
         // return first organism on the same position as attacker's
         // as long as it isn't the attacker itself
         if (attacker->getPos() == organisms[i]->getPos() &&
             attacker->getBirthDate() != organisms[i]->getBirthDate()) {
-            return &organisms[i];
+            return organisms[i];
         }
     }
     return nullptr;
