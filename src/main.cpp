@@ -22,6 +22,7 @@ int game() {
         turnCount++;
         system("cls");
         std::cout << "Tura: " << turnCount << std::endl;
+        world.removeDeadOrganisms();
         world.makeTurns();
         world.draw();
 

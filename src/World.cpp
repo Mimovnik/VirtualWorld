@@ -122,6 +122,14 @@ void World::makeTurns() {
     }
 }
 
+    void World::removeDeadOrganisms(){
+        for(int i = 0; i < organisms.size();i++){
+            if(organisms[i]->isDead()){
+                organisms.erase(organisms.begin() + i);
+            }
+        }
+    }
+
 Vector World::getRandomEmptyPos() {
     Vector pos(rand() % width, rand() % height);
     for (int i = 0; i < organisms.size(); i++) {

@@ -4,12 +4,15 @@
 #include "Organism.hpp"
 
 class Plant : public Organism {
+   protected:
+    void takeHit(Organism* attacker) override;
+
    public:
     Plant();
+
     Plant(World* world, int strength, int initiative, char skin);
+
     void action() override;
-    void collide(Organism* other) override;
-    void takeHit(Organism* attacker) override;
 };
 
 #endif

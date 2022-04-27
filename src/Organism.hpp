@@ -16,14 +16,23 @@ class Organism {
     char skin;
     int birthDate;
     World* world = nullptr;
+    bool dead;
     static int organismsCount;
 
     friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
+
+    void collide(Organism* defender);
+
+    bool isStronger(Organism* other);
+
+    virtual void takeHit(Organism* attacker) = 0;
 
    public:
     Organism();
 
     Organism(World* world, int strength, int initiative, char skin);
+
+    virtual void action() = 0;
 
     friend bool compareOrganisms(Organism* left, Organism* right);
 
@@ -33,13 +42,9 @@ class Organism {
 
     int getBirthDate();
 
-    bool isStronger(Organism* other);
+    void die();
 
-    virtual void action() = 0;
-
-    virtual void collide(Organism* defender) = 0;
-
-    virtual void takeHit(Organism* attacker) = 0;
+    bool isDead();
 };
 
 #endif

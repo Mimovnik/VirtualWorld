@@ -5,14 +5,8 @@ Plant::Plant() {}
 Plant::Plant(World* world, int strength, int initiative, char skin)
     : Organism(world, strength, initiative, skin) {}
 
-void Plant::action(){
-
+void Plant::action() {
+    
 }
 
-void Plant::collide(Organism* other){
-
-}
-
-void Plant::takeHit(Organism* attacker){
-
-} 
+void Plant::takeHit(Organism* attacker) { die(); }

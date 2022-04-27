@@ -15,28 +15,31 @@ class World {
 
     void sortOrganisms();
 
-   public:
-    World(int width, int heigth);
-
     char* getCell(int x, int y);
 
     char* getCell(Vector position);
 
-    void draw();
-
     void renderOrganisms();
+
+
+   public:
+    World(int width, int heigth);
 
     void makeTurns();
 
-    Vector getRandomEmptyPos();
+    void draw();
 
-    Organism* getColliderWith(Organism* attacker);
+    void removeDeadOrganisms();
 
     int getSize() const;
 
     int getWidth() const;
 
     int getHeight() const;
+
+    Vector getRandomEmptyPos();
+    
+    Organism* getColliderWith(Organism* attacker);
 };
 
 #endif
