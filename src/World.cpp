@@ -1,10 +1,15 @@
 #include "World.hpp"
 
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 #include <stdlib.h>
 
 #include <algorithm>
-#include <iostream>
 #include <cstring>
+#include <iostream>
 
 #include "animals/Antelope.hpp"
 #include "animals/Fox.hpp"
@@ -98,6 +103,7 @@ void World::draw() {
         }
         std::cout << std::endl;
     }
+    sleep(1);
 }
 void World::renderOrganisms() {
     for (int i = 0; i < organisms.size(); i++) {
@@ -123,13 +129,13 @@ void World::makeTurns() {
     }
 }
 
-    void World::removeDeadOrganisms(){
-        for(int i = 0; i < organisms.size();i++){
-            if(organisms[i]->isDead()){
-                organisms.erase(organisms.begin() + i);
-            }
+void World::removeDeadOrganisms() {
+    for (int i = 0; i < organisms.size(); i++) {
+        if (organisms[i]->isDead()) {
+            organisms.erase(organisms.begin() + i);
         }
     }
+}
 
 Vector World::getRandomEmptyPos() {
     Vector pos(rand() % width, rand() % height);

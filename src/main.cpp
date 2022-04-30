@@ -7,7 +7,6 @@
 
 #define ID_NAME "Jakub Kwidzinski 188647"
 int game() {
-    std::system("clear");
     srand(time(NULL));
     bool running = true;
 
@@ -19,11 +18,10 @@ int game() {
     int turnCount = 0;
     while (running) {
         turnCount++;
-        std::system("clear");
         std::cout << "Tura: " << turnCount << std::endl;
-        world.removeDeadOrganisms();
-        world.makeTurns();
         world.draw();
+        world.makeTurns();
+        world.removeDeadOrganisms();
 
         std::cout << "n- nastepna tura, x- wyjscie z gry\n";
         char input;
