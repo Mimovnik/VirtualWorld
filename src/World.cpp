@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <cstring>
 
 #include "animals/Antelope.hpp"
 #include "animals/Fox.hpp"
@@ -22,7 +23,7 @@ World::World(int width, int height) {
     this->height = height;
     int size = width * height;
     this->terrain = new char[size];
-    std::memset(terrain, '.', size);
+    memset(terrain, '.', size);
     int organismsNumber = size / 100;
     organisms.push_back(new Human(this));
     for (int i = 0; i < organismsNumber; i++) {
@@ -65,11 +66,11 @@ World::World(int width, int height) {
 char* World::getCell(int x, int y) {
     char errorMsg[128];
     if (x > width || x < 0) {
-        sprintf_s(errorMsg, "Bad x coordinate: %d", x);
+        sprintf(errorMsg, "Bad x coordinate: %d", x);
         throw errorMsg;
     }
     if (y > height || y < 0) {
-        sprintf_s(errorMsg, "Bad y coordinate: %d", y);
+        sprintf(errorMsg, "Bad y coordinate: %d", y);
         throw errorMsg;
     }
     return &terrain[width * y + x];
@@ -78,11 +79,11 @@ char* World::getCell(int x, int y) {
 char* World::getCell(Vector position) {
     char errorMsg[128];
     if (position.x > width || position.x < 0) {
-        sprintf_s(errorMsg, "Bad x coordinate: %d", position.x);
+        sprintf(errorMsg, "Bad x coordinate: %d", position.x);
         throw errorMsg;
     }
     if (position.y > height || position.y < 0) {
-        sprintf_s(errorMsg, "Bad y coordinate: %d", position.y);
+        sprintf(errorMsg, "Bad y coordinate: %d", position.y);
         throw errorMsg;
     }
     return &terrain[width * position.y + position.x];

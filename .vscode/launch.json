@@ -2,8 +2,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch",
-            "type": "cppvsdbg",
+            "name": "Launch and Debug",
+            "type": "cppdbg",
             "request": "launch",
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
@@ -18,7 +18,15 @@
                     "value": "$PATH:${command:cmake.launchTargetDirectory}"
                 }
             ],
-            "console": "newExternalWindow"
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ]
 }
