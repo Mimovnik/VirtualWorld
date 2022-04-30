@@ -2,7 +2,7 @@
 #define ORGANISM_HPP
 
 #include <time.h>
-
+#include <string>
 #include <iostream>
 
 #include "Vector.hpp"
@@ -15,6 +15,7 @@ class Organism {
     Vector position;
     char skin;
     int birthDate;
+    std::string name;
     World* world = nullptr;
     bool dead;
     static int organismsCount;
@@ -30,7 +31,7 @@ class Organism {
    public:
     Organism();
 
-    Organism(World* world, int strength, int initiative, char skin);
+    Organism(World* world, int strength, int initiative, char skin, std::string name);
 
     virtual void action() = 0;
 
@@ -39,6 +40,8 @@ class Organism {
     Vector getPos();
 
     char getSkin();
+
+    std::string getName();
 
     int getBirthDate();
 

@@ -5,6 +5,7 @@
 #else
 #include <unistd.h>
 #endif
+
 #include <stdlib.h>
 
 #include <algorithm>
@@ -24,12 +25,15 @@
 #include "plants/Wolfberry.hpp"
 
 World::World(int width, int height) {
+    this->turnCount = 0;
+    this->turnWait = 500;
     this->width = width;
     this->height = height;
     int size = width * height;
     this->terrain = new char[size];
     memset(terrain, '.', size);
-    int organismsNumber = size / 100;
+    // Set organisms density on terrain
+    int organismsNumber = size / 50;
     organisms.push_back(new Human(this));
     for (int i = 0; i < organismsNumber; i++) {
         int whichOne = rand() % 10;
@@ -67,6 +71,9 @@ World::World(int width, int height) {
         }
     }
 }
+int World::getTurnCount() const { return turnCount; }
+
+void World::addTurn() { turnCount++; }
 
 char* World::getCell(int x, int y) {
     char errorMsg[128];
@@ -95,6 +102,14 @@ char* World::getCell(Vector position) {
 }
 
 void World::draw() {
+    // clear console
+#ifdef _WIN32
+    system("cls");
+#else
+    std::cout << "\033c";
+#endif
+
+    std::cout << "Tura: " << getTurnCount() << std::endl;
     std::memset(terrain, '.', width * height);
     renderOrganisms();
     for (int y = 0; y < height; y++) {
@@ -103,13 +118,14 @@ void World::draw() {
         }
         std::cout << std::endl;
     }
-    sleep(1);
 }
 void World::renderOrganisms() {
     for (int i = 0; i < organisms.size(); i++) {
         *getCell(organisms[i]->getPos()) = organisms[i]->getSkin();
     }
 }
+
+void World::writeEvent(std::string event) { combatLog += event; }
 
 bool compareOrganisms(Organism* left, Organism* right) {
     if (left->initiative != right->initiative) {
@@ -124,8 +140,16 @@ void World::sortOrganisms() {
 
 void World::makeTurns() {
     sortOrganisms();
+    combatLog.erase();
     for (int i = 0; i < organisms.size(); i++) {
+        draw();
+        std::cout << "This is " << organisms[i]->getName() << "'s turn."
+                  << std::endl;
         organisms[i]->action();
+        std::cout << "Combat log: " << std::endl;
+        std::cout << combatLog << std::endl;
+        removeDeadOrganisms();
+        usleep(turnWait * 1000);
     }
 }
 

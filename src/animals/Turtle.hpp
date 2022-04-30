@@ -6,7 +6,7 @@
 class Turtle : public Animal {
    public:
     Turtle(World* world)
-        : Animal(world, TURTLE_STRENGTH, TURTLE_INITIATIVE, TURTLE_SKIN) {}
+        : Animal(world, TURTLE_STRENGTH, TURTLE_INITIATIVE, TURTLE_SKIN, "Turtle") {}
 };
 
 #endif

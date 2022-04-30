@@ -6,7 +6,7 @@
 class Fox : public Animal {
    public:
     Fox(World* world)
-        : Animal(world, FOX_STRENGTH, FOX_INITIATIVE, FOX_SKIN) {}
+        : Animal(world, FOX_STRENGTH, FOX_INITIATIVE, FOX_SKIN, "Fox") {}
 };
 
 #endif

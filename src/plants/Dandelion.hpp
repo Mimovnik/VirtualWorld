@@ -6,7 +6,7 @@
 class Dandelion : public Plant {
    public:
     Dandelion(World* world)
-        : Plant(world, DANDELION_STRENGTH, DANDELION_INITIATIVE, DANDELION_SKIN) {}
+        : Plant(world, DANDELION_STRENGTH, DANDELION_INITIATIVE, DANDELION_SKIN, "Dandelion") {}
 };
 
 #endif

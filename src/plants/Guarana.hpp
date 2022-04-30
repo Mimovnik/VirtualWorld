@@ -6,7 +6,7 @@
 class Guarana : public Plant {
    public:
     Guarana(World* world)
-        : Plant(world, GUARANA_STRENGTH, GUARANA_INITIATIVE, GUARANA_SKIN) {}
+        : Plant(world, GUARANA_STRENGTH, GUARANA_INITIATIVE, GUARANA_SKIN, "Guarana") {}
 };
 
 #endif

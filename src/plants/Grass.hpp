@@ -6,7 +6,7 @@
 class Grass : public Plant {
    public:
     Grass(World* world)
-        : Plant(world, GRASS_STRENGTH, GRASS_INITIATIVE, GRASS_SKIN) {}
+        : Plant(world, GRASS_STRENGTH, GRASS_INITIATIVE, GRASS_SKIN, "Grass") {}
 };
 
 #endif

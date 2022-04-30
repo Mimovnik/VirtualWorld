@@ -2,6 +2,7 @@
 #define WORLD_HPP
 
 #include <vector>
+#include <string>
 
 #include "Organism.hpp"
 
@@ -10,6 +11,9 @@ class World {
     int width, height;
     char* terrain = nullptr;
     std::vector<Organism*> organisms;
+    int turnCount;
+    std::string combatLog;
+    unsigned int turnWait;
 
     friend std::ostream& operator<<(std::ostream& os, const World& world);
 
@@ -21,7 +25,6 @@ class World {
 
     void renderOrganisms();
 
-
    public:
     World(int width, int heigth);
 
@@ -31,11 +34,17 @@ class World {
 
     void removeDeadOrganisms();
 
+    void writeEvent(std::string event);
+
     int getSize() const;
 
     int getWidth() const;
 
     int getHeight() const;
+    
+    int getTurnCount() const;
+
+    void addTurn();
 
     Vector getRandomEmptyPos();
     

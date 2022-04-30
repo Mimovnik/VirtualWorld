@@ -9,12 +9,14 @@ class Animal : public Organism {
 
     void takeHit(Organism* attacker) override;
 
+    virtual int getDirection();
+
    public:
     void action() override;
 
     Animal();
     
-    Animal(World* world, int strength, int initiative, char skin);
+    Animal(World* world, int strength, int initiative, char skin, std::string name);
 };
 
 #endif

@@ -6,7 +6,9 @@
 class Antelope : public Animal {
    public:
     Antelope(World* world)
-        : Animal(world, ANTELOPE_STRENGTH, ANTELOPE_INITIATIVE, ANTELOPE_SKIN) {}
+        : Animal(world, ANTELOPE_STRENGTH, ANTELOPE_INITIATIVE, ANTELOPE_SKIN,
+                 "Antelope") {
+    }
 };
 
 #endif

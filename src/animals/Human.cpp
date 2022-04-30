@@ -2,31 +2,28 @@
 
 #include "../World.hpp"
 
-void Human::action() {
-    char direction;
+int Human::getDirection() {
+    char input;
+    int direction;
     while (true) {
-        std::cout << "You're a human [H]. Type w s a d and hit enter to move" << std::endl;
-        std::cin >> direction;
-        if (direction == 'd') {
-            move(0);
+        std::cout << "You're a human [H]. Type w s a d and hit enter to move"
+                  << std::endl;
+        std::cin >> input;
+        if (input == 'd') {
+            direction = 0;
             break;
-        } else if (direction == 'a') {
-            move(1);
+        } else if (input == 'a') {
+            direction = 1;
             break;
-        } else if (direction == 's') {
-            move(2);
+        } else if (input == 's') {
+            direction = 2;
             break;
-        } else if (direction == 'w') {
-            move(3);
+        } else if (input == 'w') {
+            direction = 3;
             break;
-        }else{
+        } else {
             std::cout << "There is no such direction" << std::endl;
         }
     }
-
-    // Organism beeing attacked by this Animal
-    Organism* defender = world->getColliderWith(this);
-    if (defender != nullptr) {
-        collide(defender);
-    }
+    return direction;
 }

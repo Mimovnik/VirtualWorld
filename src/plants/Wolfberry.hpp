@@ -6,7 +6,7 @@
 class Wolfberry : public Plant {
    public:
     Wolfberry(World* world)
-        : Plant(world, WOLFBERRY_STRENGTH, WOLFBERRY_INITIATIVE, WOLFBERRY_SKIN) {}
+        : Plant(world, WOLFBERRY_STRENGTH, WOLFBERRY_INITIATIVE, WOLFBERRY_SKIN, "Wolfberry") {}
 };
 
 #endif

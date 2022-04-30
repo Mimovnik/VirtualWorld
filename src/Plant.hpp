@@ -10,7 +10,7 @@ class Plant : public Organism {
    public:
     Plant();
 
-    Plant(World* world, int strength, int initiative, char skin);
+    Plant(World* world, int strength, int initiative, char skin, std::string name);
 
     void action() override;
 };

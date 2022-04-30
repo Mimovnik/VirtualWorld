@@ -15,13 +15,10 @@ int game() {
     int width, height;
     std::cin >> width >> height;
     World world(width, height);
-    int turnCount = 0;
     while (running) {
-        turnCount++;
-        std::cout << "Tura: " << turnCount << std::endl;
+        world.addTurn();
         world.draw();
         world.makeTurns();
-        world.removeDeadOrganisms();
 
         std::cout << "n- nastepna tura, x- wyjscie z gry\n";
         char input;

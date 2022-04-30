@@ -9,8 +9,10 @@ Organism::Organism() {
     position = Vector();
 }
 
-Organism::Organism(World* world, int strength, int initiative, char skin) {
+Organism::Organism(World* world, int strength, int initiative, char skin,
+                   std::string name_) {
     organismsCount++;
+    this->name = name_;
     this->dead = false;
     this->world = world;
     this->strength = strength;
@@ -21,6 +23,8 @@ Organism::Organism(World* world, int strength, int initiative, char skin) {
 }
 
 Vector Organism::getPos() { return position; }
+
+std::string Organism::getName() { return name; }
 
 std::ostream& operator<<(std::ostream& os, const Organism& organism) {
     std::cout << organism.skin;

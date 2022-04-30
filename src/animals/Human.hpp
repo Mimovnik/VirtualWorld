@@ -6,9 +6,10 @@
 class Human : public Animal {
    public:
     Human(World* world)
-        : Animal(world, HUMAN_STRENGTH, HUMAN_INITIATIVE, HUMAN_SKIN) {}
+        : Animal(world, HUMAN_STRENGTH, HUMAN_INITIATIVE, HUMAN_SKIN,
+                 "Player") {}
 
-    void action() override;
+    int getDirection() override;
 };
 
 #endif
