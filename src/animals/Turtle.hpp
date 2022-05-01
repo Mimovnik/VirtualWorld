@@ -6,7 +6,10 @@
 class Turtle : public Animal {
    public:
     Turtle(World* world)
-        : Animal(world, TURTLE_STRENGTH, TURTLE_INITIATIVE, TURTLE_SKIN, "Turtle") {}
+        : Animal(world, TURTLE_STRENGTH, TURTLE_INITIATIVE, TURTLE_SKIN,
+                 "Turtle") {}
+
+    int getDirection() override;
 };
 
 #endif
