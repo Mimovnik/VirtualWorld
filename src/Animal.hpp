@@ -5,7 +5,10 @@
 
 class Animal : public Organism {
    protected:
-   bool attackedThisTurn;
+    bool attackedThisTurn;
+
+    int moveRange;
+
     void move(int direction);
 
     void takeHit(Organism* attacker) override;
@@ -16,8 +19,9 @@ class Animal : public Organism {
     void action() override;
 
     Animal();
-    
-    Animal(World* world, int strength, int initiative, char skin, std::string name);
+
+    Animal(World* world, int strength, int initiative, char skin,
+           std::string name);
 };
 
 #endif

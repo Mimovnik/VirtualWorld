@@ -38,12 +38,12 @@ World::World(int width, int height) {
     organisms.push_back(new Human(this));
     // int anim1count = 20;
     // while (anim1count--) {
-    //     organisms.push_back(new Fox(this));
+    //     organisms.push_back(new Antelope(this));
     // }
     // int anim2count = 20;
     // while (anim2count--) {
-    //     organisms.push_back(new Turtle(this));
-    //     organisms.push_back(new Grass(this));
+    //     organisms.push_back(new Wolf(this));
+    //     organisms.push_back(new Wolfberry(this));
     // }
     for (int i = 0; i < organismsNumber; i++) {
         int whichOne = rand() % 10;
