@@ -83,20 +83,23 @@ void Animal::action() {
     }
     int direction = getDirection();
     for (int i = 0; i < moveRange; i++) {
+        if (dead) {
+            break;
+        }
         lastPosition = position;
         move(direction);
-    }
-    // Organism beeing attacked by this Animal
-    Organism* defender = world->getColliderWith(this);
-    if (defender != nullptr) {
-        // Organisms are of the same specie
-        if(defender->getSkin() == skin){
-            breed(defender);
-            return;
+        // Organism beeing attacked by this Animal
+        Organism* defender = world->getColliderWith(this);
+        if (defender != nullptr) {
+            // Organisms are of the same specie
+            if (defender->getSkin() == skin) {
+                breed(defender);
+                return;
+            }
+            attackedThisTurn = true;
+            world->writeEvent(name + " attacks " + defender->getName() + "\n");
+            collide(defender);
         }
-        attackedThisTurn = true;
-        world->writeEvent(name + " attacks " + defender->getName() + "\n");
-        collide(defender);
     }
 };
 
