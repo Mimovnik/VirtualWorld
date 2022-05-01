@@ -15,6 +15,9 @@ class Human : public Animal {
     }
 
     int getDirection() override;
+
+
+    Animal* giveBirth() override;
 };
 
 #endif

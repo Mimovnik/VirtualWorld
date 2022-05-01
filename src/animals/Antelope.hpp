@@ -19,6 +19,8 @@ class Antelope : public Animal {
     }
 
     void takeHit(Organism* attacker) override;
+
+    Animal* giveBirth() override;
 };
 
 #endif

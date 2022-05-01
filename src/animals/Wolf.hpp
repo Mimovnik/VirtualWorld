@@ -12,6 +12,8 @@ class Wolf : public Animal {
         counter++;
         name += "(" + std::to_string(counter) + ")";
     }
+
+    Animal* giveBirth() override;
 };
 
 #endif

@@ -4,6 +4,8 @@
 
 int Human::counter = 0;
 
+Animal* Human::giveBirth() { return new Human(world); }
+
 int Human::getDirection() {
     char input;
     int direction;

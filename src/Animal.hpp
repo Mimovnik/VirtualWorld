@@ -15,6 +15,10 @@ class Animal : public Organism {
 
     virtual int getDirection();
 
+    void breed(Organism* partner);
+
+    virtual Animal* giveBirth() = 0;
+
    public:
     void action() override;
 

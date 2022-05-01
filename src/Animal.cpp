@@ -57,6 +57,24 @@ void Animal::move(int direction) {
 
 int Animal::getDirection() { return rand() % 4; }
 
+void Animal::breed(Organism* partner) {
+    moveBack();
+    int nearX = rand() % 3 - 1;
+    int nearY = rand() % 3 - 1;
+    Vector birthPosition = getPos().addX(nearX).addY(nearY);
+    if (birthPosition.x < 0 || birthPosition.x >= world->getWidth() ||
+        birthPosition.y < 0 || birthPosition.y >= world->getHeight()) {
+        return;
+    }
+
+    if (world->getOrganismByPos(birthPosition) == nullptr) {
+        world->writeEvent(name + " have a baby with " + partner->getName() +
+                          ".\n");
+
+        world->addOrganism(giveBirth(), birthPosition);
+    }
+}
+
 void Animal::action() {
     attackedThisTurn = false;
     if (stunned) {
@@ -71,6 +89,11 @@ void Animal::action() {
     // Organism beeing attacked by this Animal
     Organism* defender = world->getColliderWith(this);
     if (defender != nullptr) {
+        // Organisms are of the same specie
+        if(defender->getSkin() == skin){
+            breed(defender);
+            return;
+        }
         attackedThisTurn = true;
         world->writeEvent(name + " attacks " + defender->getName() + "\n");
         collide(defender);

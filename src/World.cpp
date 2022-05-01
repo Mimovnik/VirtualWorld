@@ -33,18 +33,9 @@ World::World(int width, int height) {
     this->terrain = new char[size];
     memset(terrain, '.', size);
     // Set organisms density on terrain in %
-    int organismDensity = 5;
+    int organismDensity = 10;
     int organismsNumber = organismDensity * size / 100;
     organisms.push_back(new Human(this));
-    // int anim1count = 20;
-    // while (anim1count--) {
-    //     organisms.push_back(new Antelope(this));
-    // }
-    // int anim2count = 20;
-    // while (anim2count--) {
-    //     organisms.push_back(new Wolf(this));
-    //     organisms.push_back(new Wolfberry(this));
-    // }
     for (int i = 0; i < organismsNumber; i++) {
         int whichOne = rand() % 10;
         switch (whichOne) {
@@ -158,10 +149,10 @@ void World::makeTurns() {
     sortOrganisms();
     combatLog.erase();
     for (int i = 0; i < organisms.size(); i++) {
+        organisms[i]->action();
         draw();
         std::cout << "This is " << organisms[i]->getName() << "'s turn."
                   << std::endl;
-        organisms[i]->action();
         std::cout << "Combat log: " << std::endl;
         std::cout << combatLog << std::endl;
         removeDeadOrganisms();

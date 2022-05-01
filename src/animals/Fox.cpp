@@ -4,6 +4,8 @@
 
 int Fox::counter = 0;
 
+Animal* Fox::giveBirth() { return new Fox(world); }
+
 int Fox::getDirection() {
     int direction;
     std::vector<int> possibleDirs;

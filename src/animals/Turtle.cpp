@@ -4,6 +4,8 @@
 
 int Turtle::counter = 0;
 
+Animal* Turtle::giveBirth() { return new Turtle(world); }
+
 int Turtle::getDirection() {
     if (rand() % 4 == 0) {
         return rand() % 4;

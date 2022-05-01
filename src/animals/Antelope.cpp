@@ -5,6 +5,9 @@
 
 int Antelope::counter = 0;
 
+
+Animal* Antelope::giveBirth() { return new Antelope(world); }
+
 void Antelope::escape(){
     int direction;
     std::vector<int> possibleDirs;

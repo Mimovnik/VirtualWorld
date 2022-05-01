@@ -17,6 +17,8 @@ class Turtle : public Animal {
     int getDirection() override;
 
     void takeHit(Organism* attacker) override;
+
+    Animal* giveBirth() override;
 };
 
 #endif
