@@ -26,15 +26,25 @@
 
 World::World(int width, int height) {
     this->turnCount = 0;
-    this->turnWait = 500;
+    this->turnWait = 100;
     this->width = width;
     this->height = height;
     int size = width * height;
     this->terrain = new char[size];
     memset(terrain, '.', size);
-    // Set organisms density on terrain
-    int organismsNumber = size / 50;
+    // Set organisms density on terrain in %
+    int organismDensity = 5;
+    int organismsNumber = organismDensity * size / 100;
     organisms.push_back(new Human(this));
+    // int anim1count = 20;
+    // while (anim1count--) {
+    //     organisms.push_back(new Fox(this));
+    // }
+    // int anim2count = 20;
+    // while (anim2count--) {
+    //     organisms.push_back(new Turtle(this));
+    //     organisms.push_back(new Grass(this));
+    // }
     for (int i = 0; i < organismsNumber; i++) {
         int whichOne = rand() % 10;
         switch (whichOne) {

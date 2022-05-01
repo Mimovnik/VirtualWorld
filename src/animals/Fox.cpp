@@ -2,13 +2,15 @@
 
 #include "../World.hpp"
 
+int Fox::counter = 0;
+
 int Fox::getDirection() {
     int direction;
     std::vector<int> possibleDirs;
     Organism* right = world->getOrganismByPos(position.addX(1));
     Organism* left = world->getOrganismByPos(position.addX(-1));
     Organism* down = world->getOrganismByPos(position.addY(1));
-    Organism* up = world->getOrganismByPos(position.addX(-1));
+    Organism* up = world->getOrganismByPos(position.addY(-1));
     if (right != nullptr) {
         if (!right->isStronger(this)) {
             possibleDirs.push_back(0);

@@ -13,6 +13,7 @@ class Organism {
     int strength;
     int initiative;
     Vector position;
+    Vector lastPosition;
     char skin;
     int birthDate;
     std::string name;
@@ -23,7 +24,6 @@ class Organism {
     friend std::ostream& operator<<(std::ostream& os, const Organism& organism);
 
     void collide(Organism* defender);
-
 
     virtual void takeHit(Organism* attacker) = 0;
 
@@ -37,12 +37,16 @@ class Organism {
     friend bool compareOrganisms(Organism* left, Organism* right);
 
     bool isStronger(Organism* other);
+
+    void moveBack();
     
     Vector getPos();
 
     char getSkin();
 
     std::string getName();
+
+    int getStrength();
 
     int getBirthDate();
 

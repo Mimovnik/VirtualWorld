@@ -7,6 +7,7 @@ int Organism::organismsCount = 0;
 Organism::Organism() {
     dead = false;
     position = Vector();
+    lastPosition = position;
 }
 
 Organism::Organism(World* world, int strength, int initiative, char skin,
@@ -19,6 +20,7 @@ Organism::Organism(World* world, int strength, int initiative, char skin,
     this->initiative = initiative;
     this->skin = skin;
     this->position = world->getRandomEmptyPos();
+    this->lastPosition = position;
     this->birthDate = organismsCount;
 }
 
@@ -47,6 +49,10 @@ bool Organism::isStronger(Organism* other) {
     return strength >= other->strength;
 }
 
+void Organism::moveBack() { position = lastPosition; }
+
 char Organism::getSkin() { return skin; }
 
 int Organism::getBirthDate() { return birthDate; }
+
+int Organism::getStrength() { return strength; }

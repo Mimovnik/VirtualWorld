@@ -5,6 +5,7 @@
 
 class Animal : public Organism {
    protected:
+   bool attackedThisTurn;
     void move(int direction);
 
     void takeHit(Organism* attacker) override;

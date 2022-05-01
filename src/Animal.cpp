@@ -8,7 +8,9 @@ Animal::Animal() {}
 
 Animal::Animal(World* world, int strength, int initiative, char skin,
                std::string name)
-    : Organism(world, strength, initiative, skin, name) {}
+    : Organism(world, strength, initiative, skin, name) {
+        attackedThisTurn = false;
+    }
 
 void Animal::move(int direction) {
     world->writeEvent(name);
@@ -55,11 +57,14 @@ void Animal::move(int direction) {
 int Animal::getDirection() { return rand() % 4; }
 
 void Animal::action() {
+    attackedThisTurn = false;
     int direction = getDirection();
+    lastPosition = position;
     move(direction);
     // Organism beeing attacked by this Animal
     Organism* defender = world->getColliderWith(this);
     if (defender != nullptr) {
+        attackedThisTurn = true;
         world->writeEvent(name + " attacks " + defender->getName() + "\n");
         collide(defender);
     }

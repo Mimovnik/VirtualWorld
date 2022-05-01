@@ -4,10 +4,15 @@
 #include "../Animal.hpp"
 
 class Human : public Animal {
+    static int counter;
+
    public:
     Human(World* world)
         : Animal(world, HUMAN_STRENGTH, HUMAN_INITIATIVE, HUMAN_SKIN,
-                 "Player") {}
+                 "Player") {
+        counter++;
+        name += "(" + std::to_string(counter) + ")";
+    }
 
     int getDirection() override;
 };

@@ -4,9 +4,14 @@
 #include "../Animal.hpp"
 
 class Sheep : public Animal {
+    static int counter;
+
    public:
     Sheep(World* world)
-        : Animal(world, SHEEP_STRENGTH, SHEEP_INITIATIVE, SHEEP_SKIN, "Sheep") {}
+        : Animal(world, SHEEP_STRENGTH, SHEEP_INITIATIVE, SHEEP_SKIN, "Sheep") {
+        counter++;
+        name += "(" + std::to_string(counter) + ")";
+    }
 };
 
 #endif

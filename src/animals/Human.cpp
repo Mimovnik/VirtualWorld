@@ -2,6 +2,8 @@
 
 #include "../World.hpp"
 
+int Human::counter = 0;
+
 int Human::getDirection() {
     char input;
     int direction;
