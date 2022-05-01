@@ -13,6 +13,8 @@ class Dandelion : public Plant {
         counter++;
         name += "(" + std::to_string(counter) + ")";
     }
+    
+    Plant* getSapling() override;
 };
 
 #endif

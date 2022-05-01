@@ -13,6 +13,10 @@ class PineBorscht : public Plant {
         counter++;
         name += "(" + std::to_string(counter) + ")";
     }
+
+    bool isStronger(Organism* other) override;
+    
+    Plant* getSapling() override;
 };
 
 #endif

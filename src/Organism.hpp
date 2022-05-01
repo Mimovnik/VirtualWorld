@@ -2,8 +2,9 @@
 #define ORGANISM_HPP
 
 #include <time.h>
-#include <string>
+
 #include <iostream>
+#include <string>
 
 #include "Vector.hpp"
 #include "settings.hpp"
@@ -30,17 +31,20 @@ class Organism {
    public:
     Organism();
 
-    Organism(World* world, int strength, int initiative, char skin, std::string name);
+    Organism(World* world, int strength, int initiative, char skin,
+             std::string name);
 
     virtual void action() = 0;
 
     friend bool compareOrganisms(Organism* left, Organism* right);
 
-    bool isStronger(Organism* other);
+    virtual bool isStronger(Organism* other);
 
     void moveBack();
-    
+
     Vector getPos();
+
+    void setPos(Vector newPos);
 
     char getSkin();
 

@@ -26,6 +26,8 @@ Organism::Organism(World* world, int strength, int initiative, char skin,
 
 Vector Organism::getPos() { return position; }
 
+void Organism::setPos(Vector newPos) { this->position = newPos; }
+
 std::string Organism::getName() { return name; }
 
 std::ostream& operator<<(std::ostream& os, const Organism& organism) {
@@ -38,10 +40,10 @@ bool Organism::isDead() { return dead; }
 
 // *this* is attacking *defender*
 void Organism::collide(Organism* defender) {
-    if (isStronger(defender)) {
-        defender->takeHit(this);
-    } else {
+    if (defender->isStronger(this)) {
         takeHit(defender);
+    } else {
+        defender->takeHit(this);
     }
 };
 

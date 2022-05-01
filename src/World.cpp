@@ -81,6 +81,11 @@ World::World(int width, int height) {
         }
     }
 }
+void World::addOrganism(Organism* newborn, Vector bornPos) {
+    newborn->setPos(bornPos);
+    organisms.insert(organisms.begin(), newborn);
+}
+
 int World::getTurnCount() const { return turnCount; }
 
 void World::addTurn() { turnCount++; }

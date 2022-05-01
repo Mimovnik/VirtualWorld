@@ -35,6 +35,8 @@ class World {
 
     void removeDeadOrganisms();
 
+    void addOrganism(Organism* newborn, Vector bornPos);
+
     void writeEvent(std::string event);
 
     int getSize() const;
