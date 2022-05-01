@@ -39,6 +39,12 @@ std::ostream& operator<<(std::ostream& os, const Organism& organism) {
 
 void Organism::stun() { stunned = true; }
 
+void Organism::buff(int additionalStrength) {
+    strength += additionalStrength;
+    world->writeEvent(getName() + " got +3 strength. Total(" +
+                      std::to_string(getStrength()) + ")\n");
+}
+
 void Organism::die() { dead = true; }
 
 bool Organism::isDead() { return dead; }

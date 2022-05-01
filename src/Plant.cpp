@@ -14,8 +14,8 @@ void Plant::spread() {
     int nearX = rand() % 3 - 1;
     int nearY = rand() % 3 - 1;
     Vector sowPosition = getPos().addX(nearX).addY(nearY);
-    if (sowPosition.x < 0 || sowPosition.x > world->getWidth() ||
-        sowPosition.y < 0 || sowPosition.y > world->getHeight()) {
+    if (sowPosition.x < 0 || sowPosition.x >= world->getWidth() ||
+        sowPosition.y < 0 || sowPosition.y >= world->getHeight()) {
         return;
     }
 

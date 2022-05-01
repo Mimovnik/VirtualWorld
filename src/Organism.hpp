@@ -45,6 +45,8 @@ class Organism {
 
     void stun();
 
+    void buff(int additionalStrength);
+
     Vector getPos();
 
     void setPos(Vector newPos);

@@ -13,6 +13,8 @@ class Guarana : public Plant {
         counter++;
         name += "(" + std::to_string(counter) + ")";
     }
+
+    void takeHit(Organism* attacker) override;
     
     Plant* getSapling() override;
 };
