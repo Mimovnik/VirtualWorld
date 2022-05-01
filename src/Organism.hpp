@@ -24,7 +24,6 @@ class Organism {
 
     void collide(Organism* defender);
 
-    bool isStronger(Organism* other);
 
     virtual void takeHit(Organism* attacker) = 0;
 
@@ -37,6 +36,8 @@ class Organism {
 
     friend bool compareOrganisms(Organism* left, Organism* right);
 
+    bool isStronger(Organism* other);
+    
     Vector getPos();
 
     char getSkin();

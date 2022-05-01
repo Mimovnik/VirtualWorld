@@ -13,13 +13,16 @@ Animal::Animal(World* world, int strength, int initiative, char skin,
 void Animal::move(int direction) {
     world->writeEvent(name);
     switch (direction) {
+        case -1:
+            world->writeEvent(" doesn't move.");
+            break;
         case 0:
             if (position.x + 1 < world->getWidth()) {
                 world->writeEvent(" moves right.");
                 position.x += 1;
                 break;
             }
-            world->writeEvent(" tries to move right but hits a wall");
+            world->writeEvent(" tries to move right but hits a wall.");
             break;
         case 1:
             if (position.x > 0) {
@@ -27,7 +30,7 @@ void Animal::move(int direction) {
                 position.x -= 1;
                 break;
             }
-            world->writeEvent(" tries to move left but hits a wall");
+            world->writeEvent(" tries to move left but hits a wall.");
             break;
         case 2:
             if (position.y + 1 < world->getHeight()) {
@@ -35,7 +38,7 @@ void Animal::move(int direction) {
                 position.y += 1;
                 break;
             }
-            world->writeEvent(" tries to move down but hits a wall");
+            world->writeEvent(" tries to move down but hits a wall.");
             break;
         case 3:
             if (position.y > 0) {
@@ -43,7 +46,7 @@ void Animal::move(int direction) {
                 position.y -= 1;
                 break;
             }
-            world->writeEvent(" tries to move up but hits a wall");
+            world->writeEvent(" tries to move up but hits a wall.");
             break;
     }
     world->writeEvent("\n");

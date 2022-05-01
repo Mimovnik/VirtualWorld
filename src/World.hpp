@@ -14,6 +14,7 @@ class World {
     int turnCount;
     std::string combatLog;
     unsigned int turnWait;
+    bool drawAfterAction;
 
     friend std::ostream& operator<<(std::ostream& os, const World& world);
 
@@ -47,6 +48,8 @@ class World {
     void addTurn();
 
     Vector getRandomEmptyPos();
+
+    Organism* getOrganismByPos(Vector position);
     
     Organism* getColliderWith(Organism* attacker);
 };

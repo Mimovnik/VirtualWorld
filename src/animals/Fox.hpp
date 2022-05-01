@@ -7,6 +7,8 @@ class Fox : public Animal {
    public:
     Fox(World* world)
         : Animal(world, FOX_STRENGTH, FOX_INITIATIVE, FOX_SKIN, "Fox") {}
+
+    int getDirection() override;
 };
 
 #endif

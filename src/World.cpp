@@ -173,6 +173,15 @@ Vector World::getRandomEmptyPos() {
     return pos;
 }
 
+Organism* World::getOrganismByPos(Vector position) {
+    for (int i = 0; i < organisms.size(); i++) {
+        if (organisms[i]->getPos() == position) {
+            return organisms[i];
+        }
+    }
+    return nullptr;
+}
+
 Organism* World::getColliderWith(Organism* attacker) {
     for (int i = 0; i < organisms.size(); i++) {
         // return first organism on the same position as attacker's
