@@ -5,6 +5,7 @@
 int Organism::organismsCount = 0;
 
 Organism::Organism() {
+    stunned = false;
     dead = false;
     position = Vector();
     lastPosition = position;
@@ -14,6 +15,7 @@ Organism::Organism(World* world, int strength, int initiative, char skin,
                    std::string name_) {
     organismsCount++;
     this->name = name_;
+    this->stunned = false;
     this->dead = false;
     this->world = world;
     this->strength = strength;
@@ -34,6 +36,9 @@ std::ostream& operator<<(std::ostream& os, const Organism& organism) {
     std::cout << organism.skin;
     return os;
 }
+
+void Organism::stun() { stunned = true; }
+
 void Organism::die() { dead = true; }
 
 bool Organism::isDead() { return dead; }

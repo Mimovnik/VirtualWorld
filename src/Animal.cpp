@@ -59,6 +59,10 @@ int Animal::getDirection() { return rand() % 4; }
 
 void Animal::action() {
     attackedThisTurn = false;
+    if (stunned) {
+        stunned = false;
+        return;
+    }
     int direction = getDirection();
     for (int i = 0; i < moveRange; i++) {
         lastPosition = position;

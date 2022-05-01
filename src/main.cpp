@@ -11,7 +11,7 @@ int game() {
     bool running = true;
 
     std::cout << ID_NAME << std::endl;
-    std::cout << "Wpisz szerokosc, a nastepnie wysokosc planszy:";
+    std::cout << "Type width and height of the board:";
     int width, height;
     std::cin >> width >> height;
     World world(width, height);
@@ -20,7 +20,7 @@ int game() {
         world.draw();
         world.makeTurns();
 
-        std::cout << "n- nastepna tura, x- wyjscie z gry\n";
+        std::cout << "n- next turn, x- exit the game\n";
         char input;
         while (std::cin >> input) {
             if (input == 'n') {

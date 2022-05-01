@@ -5,6 +5,8 @@
 
 class Plant : public Organism {
    protected:
+      int spreadTries;
+
     void takeHit(Organism* attacker) override;
 
     void spread();

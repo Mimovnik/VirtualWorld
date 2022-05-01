@@ -12,6 +12,8 @@ class Dandelion : public Plant {
                 "Dandelion") {
         counter++;
         name += "(" + std::to_string(counter) + ")";
+
+        spreadTries = 3;
     }
     
     Plant* getSapling() override;

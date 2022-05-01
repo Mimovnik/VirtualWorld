@@ -83,7 +83,8 @@ World::World(int width, int height) {
 }
 void World::addOrganism(Organism* newborn, Vector bornPos) {
     newborn->setPos(bornPos);
-    organisms.insert(organisms.begin(), newborn);
+    newborn->stun();
+    organisms.push_back(newborn);
 }
 
 int World::getTurnCount() const { return turnCount; }
@@ -124,7 +125,7 @@ void World::draw() {
     std::cout << "\033c";
 #endif
 
-    std::cout << "Tura: " << getTurnCount() << std::endl;
+    std::cout << "Turn: " << getTurnCount() << std::endl;
     std::memset(terrain, '.', width * height);
     renderOrganisms();
     for (int y = 0; y < height; y++) {

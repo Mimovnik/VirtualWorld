@@ -19,6 +19,7 @@ class Organism {
     int birthDate;
     std::string name;
     World* world = nullptr;
+    bool stunned;
     bool dead;
     static int organismsCount;
 
@@ -41,6 +42,8 @@ class Organism {
     virtual bool isStronger(Organism* other);
 
     void moveBack();
+
+    void stun();
 
     Vector getPos();
 
